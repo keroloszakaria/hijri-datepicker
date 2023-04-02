@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+
+    <link href="./bootstrap-hijri-datepicker.min.css" rel="stylesheet" />
+
+    <!-- With locals <script src="moment-with-locales.min.js"></script> -->
+    <!-- <script src="./bootstrap-hijri-datepicker.js"></script> -->
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group">
+            <label> Date </label>
+            <div class="input-group">
+              <input type="text" class="form-control" id="hijri-date-input" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.min.js"></script>
+
+    <script src="./bootstrap-hijri-datetimepicker.min.js"></script>
+    <script type="text/javascript">
+      $("#hijri-date-input").hijriDatePicker();
+    </script>
+    <script type="text/javascript">
+      $(function () {
+        var isHijiri = false;
+        $("#hijri-date-input").on("focus", function () {
+          $("a[data-action='switchDate']").on("click", function () {
+            isHijiri = !isHijiri;
+          });
+        });
+
+        $("#hijri-date-input").on("blur", function () {
+          let value = $(this).val();
+          if (!isHijiri) {
+            // value.split("-").reverse().join("-");
+            console.log(value.split("-").reverse().join("-"));
+          } else {
+            console.log(value);
+          }
+          console.log(isHijiri);
+        });
+      });
+    </script>
+  </body>
+</html>
